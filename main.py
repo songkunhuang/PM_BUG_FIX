@@ -108,7 +108,7 @@ def generate_quart_from_year(db, df_cum, member_num):
 
         # 创建数据库连接
 
-        # oracle://prdmart:oracle@10.1.1.121:1521/orcl"
+        # oracle://XXXX:1521/orcl"
         # 创建游标对象
         cursor = db.cursor()
 
@@ -136,7 +136,7 @@ def main_process(cont_id):
     cx_Oracle.init_oracle_client(lib_dir=r"instantclient_19_10")
 
     # 绩效考核内容表
-    conn_info = "oracle://prdmart:oracle@10.1.1.109:1521/orcl"
+    conn_info = "oracle://XXX/orcl"
     db = records.Database(conn_info)
     sql = """  SELECT a.user_id, a.cont_id, e.json_str as quart_template_json, replace(e.json_str2,',','') AS grade_position, a.json_str AS quart_json,a.parent_id as a_parent_id, b.json_str AS year_json,b.parent_id, a.create_time, a.update_time FROM prdsys.pm_perf_excel_content a
                 INNER JOIN prdsys.pm_perf_excel_content b ON a.parent_id = b.cont_id
